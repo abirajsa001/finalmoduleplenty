@@ -80,9 +80,25 @@ $(document).ready(function () {
     console.log('billing updated');
 });
 
-document.addEventListener('billingAddressChanged', function () {
-    console.log('billingAddressChanged');
-});
+
+            window.isBillingUpdate = false;
+
+        $(document).on('click', '.item-edit button', function () {
+            window.isBillingUpdate = true;
+        });
+
+        document.addEventListener('billingAddressChanged', function () {
+
+            if (window.isBillingUpdate) {
+               console.log('googepay');
+            }
+
+            window.isBillingUpdate = false;
+        });
+
+
+
+
             if (nnPaymentMethodKey === 'NOVALNET_APPLEPAY') {
 
                 if ($(mutation.target).find(
