@@ -96,16 +96,6 @@ $(document).ready(function () {
         subtree: true
     });
 
-    document.addEventListener('billingAddressChanged', function () {
-
-        var nnPaymentMethodKey = $('#nn_paymentmethod_key').val();
-
-        if (nnPaymentMethodKey === 'NOVALNET_GOOGLEPAY') {
-            console.log('loaded');
-            location.reload();
-        }
-    });
-
 });
 
 </script>
