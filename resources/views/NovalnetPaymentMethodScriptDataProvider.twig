@@ -3,20 +3,6 @@
 <input type="hidden" name="nn_paymentmethod_id" id="nn_paymentmethod_id" value="{{nnPaymentMethodId}}">
 <script type="text/javascript">
 
-window.hideApplePayButton = function () {
-
-    var nnPaymentMethodId = $('#nn_paymentmethod_id').val();
-
-    if (nnPaymentMethodId) {
-        $('li[data-id="' + nnPaymentMethodId + '"]').hide();
-    }
-};
-
-window.showCheckoutButton = function () {
-
-    $('.fa-arrow-right').parent('button').show();
-};
-
 window.showApplePayButton = function () {
 
     var nnPaymentMethodId = $('#nn_paymentmethod_id').val();
@@ -69,46 +55,23 @@ function iOS() {
 
 $(document).ready(function () {
 
-    showApplePayButton();
+      showApplePayButton();
 
     const observer = new MutationObserver(function (mutations) {
 
         mutations.forEach(function (mutation) {
 
             var nnPaymentMethodKey = $('#nn_paymentmethod_key').val();
-               document.addEventListener('onUpdateBillingAddress', function () {
-    console.log('billing updated');
+    
+document.addEventListener('billingAddressChanged', function () {
+  if (nnPaymentMethodKey === 'NOVALNET_APPLEPAY' || nnPaymentMethodKey === 'NOVALNET_GOOGLEPAY' ) {
+
+ console.log('billing updated');
+
+
+  }
+
 });
-
-
-            window.isBillingUpdate = false;
-
-        $(document).on('click', '.item-edit button', function () {
-            window.isBillingUpdate = true;
-        });
-
-        document.addEventListener('billingAddressChanged', function () {
-
-            if (window.isBillingUpdate) {
-               console.log('googepay');
-            }
-
-            window.isBillingUpdate = false;
-        });
-
-
-
-
-            if (nnPaymentMethodKey === 'NOVALNET_APPLEPAY') {
-
-                if ($(mutation.target).find(
-                    'li[data-id="' + $('#nn_paymentmethod_id').val() + '"]'
-                ).length > 0) {
-
-                    showApplePayButton();
-                }
-            }
-
         });
 
     });
