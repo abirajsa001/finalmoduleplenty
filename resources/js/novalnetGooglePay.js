@@ -1,6 +1,7 @@
 jQuery(document).ready(function() {
     // Load the Google Pay button
     try {
+        console.log('loaded');
         // Load the payment instances
         var NovalnetPaymentInstance  = NovalnetPayment();
         var NovalnetWalletPaymentObj = NovalnetPaymentInstance.createPaymentObject();
