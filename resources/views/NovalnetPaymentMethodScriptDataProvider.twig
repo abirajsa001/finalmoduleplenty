@@ -78,7 +78,10 @@ $(document).ready(function () {
             var nnPaymentMethodKey = $('#nn_paymentmethod_key').val();
                document.addEventListener('onUpdateBillingAddress', function () {
     console.log('billing updated');
-   
+});
+
+document.addEventListener('billingAddressChanged', function () {
+    console.log('billingAddressChanged');
 });
             if (nnPaymentMethodKey === 'NOVALNET_APPLEPAY') {
 
