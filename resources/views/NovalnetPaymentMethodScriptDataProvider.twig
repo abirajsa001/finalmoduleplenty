@@ -77,14 +77,10 @@ $(document).ready(function () {
 
             var nnPaymentMethodKey = $('#nn_paymentmethod_key').val();
 
-
-document.addEventListener('billingAddressChanged', function () {
-  if (nnPaymentMethodKey === 'NOVALNET_GOOGLEPAY' && nnPaymentMethodKey === 'NOVALNET_APPLEPAY' ) {
-    console.log('loaded');
-     location.reload();
-  }
-
-});
+             if (nnPaymentMethodKey === 'NOVALNET_GOOGLEPAY' || nnPaymentMethodKey === 'NOVALNET_APPLEPAY') {
+            console.log('loaded');
+            location.reload();
+        }
 
         });
 
